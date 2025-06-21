@@ -1,0 +1,98 @@
+﻿<Window x:Class="Telecom_Operator_Repair.Installer_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Telecom_Operator_Repair"
+        mc:Ignorable="d"
+        Title="Окно монтажника" Height="550" Width="1000" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFF0F0F0" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Таблица заказов -->
+        <DataGrid x:Name="OrdersDataGrid" Grid.Row="0"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="OrdersDataGrid_SelectionChanged"
+                  Background="White"
+                  BorderBrush="#FFCCCCCC">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID заказа" Width="100" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Дата заказа" Width="120" Binding="{Binding CreatedDate, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Адрес" Width="200" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Лиц. счет" Width="100" Binding="{Binding AccountNumber}"/>
+                <DataGridTextColumn Header="Контактные данные" Width="180" Binding="{Binding ContactInfo}"/>
+                <DataGridTextColumn Header="Статус" Width="120" Binding="{Binding StatusId}"/>
+                <DataGridTextColumn Header="Служебный комментарий" Width="*" Binding="{Binding Comment}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Панель редактирования -->
+        <Border Grid.Row="1" Margin="0,10,0,10" Padding="10" Background="#FFE3E3E3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- ID заказа -->
+                <TextBlock Grid.Row="0" Grid.Column="0" 
+                           Text="ID заказа:" 
+                           Margin="0,0,10,5"
+                           VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" 
+                         x:Name="OrderIdTextBox"
+                         Margin="0,0,0,5"
+                         IsReadOnly="True"/>
+
+                <!-- Статус -->
+                <TextBlock Grid.Row="0" Grid.Column="2" 
+                           Text="Статус:" 
+                           Margin="20,0,10,5"
+                           VerticalAlignment="Center"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" 
+                          x:Name="StatusComboBox"
+                          Margin="0,0,0,5"
+                          SelectedIndex="0">
+                    <ComboBoxItem>В работе</ComboBoxItem>
+                    <ComboBoxItem>Требует доработки</ComboBoxItem>
+                    <ComboBoxItem>Завершен</ComboBoxItem>
+                    <ComboBoxItem>Отменен</ComboBoxItem>
+                </ComboBox>
+
+                <!-- Комментарий -->
+                <TextBlock Grid.Row="1" Grid.Column="0" 
+                           Text="Комментарий:" 
+                           Margin="0,0,10,0"
+                           VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" 
+                         x:Name="CommentTextBox"
+                         Grid.ColumnSpan="3"
+                         Margin="0,5,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" 
+                    Width="120" 
+                    Height="35"
+                    Margin="0,0,10,0"
+                    Background="#FF0078D7"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

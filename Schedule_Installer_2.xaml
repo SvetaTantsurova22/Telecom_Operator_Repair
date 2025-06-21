@@ -1,0 +1,26 @@
+﻿<Window x:Class="Telecom_Operator_Repair.Schedule_Installer_2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Telecom_Operator_Repair"
+        mc:Ignorable="d"
+        Title="Расписание монтажников" Height="700" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFF0F0F0">
+        <!-- Заголовок -->
+        <Border Background="#FF0078D7" Padding="10">
+            <Button Content="Назад" HorizontalAlignment="Left" Height="29" Margin="727,603,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold" Click="Button_Click"/>
+        </Border>
+
+        <!-- Таблица с данными -->
+        <DataGrid x:Name="ScheduleGrid" Margin="20,50,20,0" Background="White" BorderBrush="#FFCCCCCC" Height="514" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID заказа" Width="100" Binding="{Binding OrderId}"/>
+                <DataGridTextColumn Header="Дата" Width="120" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Адрес заказа" Width="250" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Контакты клиента" Width="200" Binding="{Binding CustomerContacts}"/>
+                <DataGridTextColumn Header="ФИО монтажника" Width="250" Binding="{Binding InstallerName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

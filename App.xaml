@@ -1,0 +1,9 @@
+﻿<Application x:Class="Telecom_Operator_Repair.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Telecom_Operator_Repair"
+             StartupUri="LogIn.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
